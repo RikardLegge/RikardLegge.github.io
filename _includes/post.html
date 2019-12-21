@@ -1,0 +1,25 @@
+{% assign post = include.post %}
+{% assign link_to_post = include.link_to_post %}
+
+<article class="post">
+    <h1 class="post-title">
+        {% if link_to_post == true %}
+        <a href="{{ site.baseurl }}{{ post.url }}">
+            {{ post.title }}
+        </a>
+        {% else %}
+            {{ post.title }}
+        {% endif %}
+    </h1>
+
+    <div class="post-header">
+        <i>
+            <time datetime="{{ post.date | date_to_xmlschema }}">
+                {{ post.date | date_to_string }}
+            </time>
+            - By {{ site.author }}
+        </i>
+    </div>
+
+    {{ post.content }}
+</article>
